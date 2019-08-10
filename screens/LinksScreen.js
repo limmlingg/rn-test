@@ -1,23 +1,17 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { Button } from 'react-native'
 
-export default function LinksScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      Hello World (Links screen)
-    </ScrollView>
-  );
+export default class LinksScreen extends React.Component {
+  render() {
+    return (
+      <Button 
+        title = "Go to settings"
+        onPress={() => { this.props.navigation.navigate('Settings') }} />
+    );
+  }
 }
 
 LinksScreen.navigationOptions = {
   title: 'Links',
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
