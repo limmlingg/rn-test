@@ -7,6 +7,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
 
+import ApiKeys from './constants/ApiKeys';
+import * as firebase from 'firebase';
+
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
@@ -26,6 +29,13 @@ export default function App(props) {
       </View>
     );
   }
+
+  // Initialise firebase if not already initialised
+  if (!firebase.apps.length) { 
+    firebase.initializeApp(ApiKeys.FirebaseConfig);
+  }
+
+  console.log(firebase);
 }
 
 async function loadResourcesAsync() {
